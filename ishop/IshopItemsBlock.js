@@ -7,8 +7,8 @@ let StockBlockDiv = React.createClass({
     },
 
     render: function () {
-        let itemCode =
-            React.DOM.tr({ className: 'tableRow' },
+        let tableHeadCode =
+            React.DOM.tr({ className: 'tableHead' },
                 React.DOM.th({ className: 'columnName' }, "Name"),
                 React.DOM.th({ className: 'columnPrice' }, "Price"),
                 React.DOM.th({ className: 'columnPhoto' }, "Photo"),
@@ -25,11 +25,14 @@ let StockBlockDiv = React.createClass({
                     React.DOM.th({ className: 'columnStock' }, current.stock))
             );
             return prevVal;
-        }, [itemCode]);
+        }, []);
 
         return React.DOM.div({ className: 'StockBlock' },
             React.DOM.div({ className: 'ShopName' }, this.props.shopName),
-            React.DOM.table({ className: 'Items', border: 1 }, itemsCode),
+            React.DOM.table({ className: 'Table' },
+                React.DOM.thead({ className: 'Thead' }, tableHeadCode),
+                React.DOM.tbody({ className: 'TItems' }, itemsCode)
+            ),
         );
     },
 });
