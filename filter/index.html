@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ДЗ filter</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+    <script src="Filter.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="VotesBlock.css" /> -->
+    <script src="TextBlock.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="VotesQuestion.css" /> -->
+    <script src="FilterBlock.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="VotesAnswer.css" /> -->
+
+    <script>
+
+        let textArr = [
+            { text: 'частопредпринимательский', code: 1 },
+            { text: 'переосвидетельствоваться', code: 2 },
+            { text: 'субстанционализироваться', code: 3 },
+            { text: 'одиннадцатиклассница', code: 4 }
+        ];
+
+        ReactDOM.render(
+            React.createElement(Filter, { text: textArr }),
+            document.getElementById('container')
+        );
+
+    </script>
+
+</body>
+
+</html>
