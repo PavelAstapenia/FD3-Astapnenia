@@ -3,12 +3,7 @@ let Filter = React.createClass({
     displayName: 'Filter',
 
     propTypes: {
-        text: React.PropTypes.arrayOf(
-            React.PropTypes.shape({
-                text: React.PropTypes.string.isRequired,
-                code: React.PropTypes.number.isRequired,
-            })
-        ),
+        text: React.PropTypes.arrayOf(React.PropTypes.string.isRequired),
     },
 
     // getInitialState: function () {
@@ -42,8 +37,8 @@ let Filter = React.createClass({
         // );
 
         return React.DOM.div({ className: 'Filter' },
-            React.createElement(FilterBlock, none),
-            React.createElement(TextBlock, { this.props.text }),
+            React.createElement(FilterBlock),
+            React.createElement(TextBlock, { text: this.props.text }),
         );
 
     },
