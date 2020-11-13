@@ -2,14 +2,36 @@ let FilterBlock = React.createClass({
 
     displayName: 'FilterBlock',
 
-    // propTypes: {
-    //     text: React.PropTypes.arrayOf(
-    //         React.PropTypes.shape({
-    //             text: React.PropTypes.string.isRequired,
-    //             code: React.PropTypes.number.isRequired,
-    //         })
-    //     ),
-    // },
+    propTypes: {
+        //     text: React.PropTypes.arrayOf(
+        //         React.PropTypes.shape({
+        //             text: React.PropTypes.string.isRequired,
+        //             code: React.PropTypes.number.isRequired,
+        //         })
+        //     ),
+        // },
+
+        sortSeted: React.PropTypes.bool.isRequired,
+        filterText: React.PropTypes.string.isRequired,
+        cbSetSort: React.PropTypes.func.isRequired,
+        cbFilterChanged: React.PropTypes.func.isRequired,
+    },
+
+    setSort: function (EO) {
+        console.log(EO.target.checked);
+        this.props.cbSetSort(EO.target.checked);
+    },
+
+    filterChanged: function (EO) {
+        console.log(EO.target.value);
+        this.props.cbFilterChanged(EO.target.value);
+    },
+
+    funcReset: function (EO) {
+        // console.log(EO.target.value);
+        // this.props.cbFilterChanged(EO.target.checked);
+    },
+
 
     // getInitialState: function () {
     //     return {
@@ -43,9 +65,9 @@ let FilterBlock = React.createClass({
 
         return React.DOM.div(null,
             React.DOM.label({ className: 'FilterBlock' },
-                React.DOM.input({ type: 'checkbox', name: 'textsort' }),
-                React.DOM.input({ type: 'text', name: 'textfilter', className: 'TextFilter' }),
-                React.DOM.input({ type: 'button', value: 'Сброс', onClick: this.cntPlus3 }),
+                React.DOM.input({ type: 'checkbox', name: 'textsort', onChange: this.setSort, checked: this.props.sortSeted }),
+                React.DOM.input({ type: 'text', name: 'textfilter', className: 'TextFilter', onChange: this.filterChanged, value: this.props.filterText }),
+                React.DOM.input({ type: 'button', value: 'Сброс', onClick: this.funcReset }),
             )
         );
 
