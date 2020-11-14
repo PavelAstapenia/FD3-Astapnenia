@@ -10,69 +10,56 @@ let Filter = React.createClass({
         return {
             sortSeted: false,   //initial value of checkbox
             filterText: '',     //initial value of filter
-            initialText: this.props.text,
-            newText: this.props.text
+            newText: ''
         };
     },
 
-    // answerSelected: function (code) {
-    //     console.log('выбран ответ с кодом ' + code);
-    //     this.setState({ selectedAnswerCode: code });
-    // },
-
     sortSeted: function (checked) {
-        console.log('Filter: checkbox status - ' + checked);
         this.setState((prevState) => { return { sortSeted: prevState.sortSeted = checked } });
-        console.log(this.state.sortSeted);
-        console.log(checked);
-        if (checked) {
-            this.modifyArr();
-        }
     },
 
     filterChanged: function (value) {
-        console.log('Filter: filter text - ' + value);
         this.setState({ filterText: value });
-        if (value != '') {
-            this.modifyArr();
-        }
+    },
+
+    funcReset: function () {
+        this.setState({ filterText: '' });
+        this.setState({ sortSeted: false });
     },
 
     modifyArr: function () {
-        let arr = this.state.initialText;
+
         let fText = this.state.filterText;
         if (fText != '') {
-            arr = arr.filter(function (fText, el) {
-                return el.includes(fText);
-            })
+            let arr1 = this.state.newText.filter(function (item) {
+                return item.includes(fText);
+            });
+            this.state.newText = arr1;
+            console.log('filter ' + this.state.newText); // проверяем как отфильтрован массив
         };
 
-        if (this.state.sortSeted == 'true') {
-            arr.sort();
+        if (this.state.sortSeted) {
+            this.state.newText.sort();
+            console.log('sort ' + this.state.newText);  // проверяем как отсортирован массив
         };
-
-        this.setState({ newText: arr });
-
-        console.log(this.state.newText);
-
     },
 
     render: function () {
 
-        // var answersCode = this.props.answers.map(v =>
-        //     React.createElement(VotesAnswer, {
-        //         key: v.code,
-        //         text: v.text, count: v.count, code: v.code,
-        //         freeanswer: v.freeanswer, freeanswertext: this.state.freeanswertext,
-        //         cbSelected: this.answerSelected,
-        //         cbFreeAnswerTextChanged: this.freeAnswerTextChanged,
-        //         workMode: this.props.workMode,
-        //     })
-        // );
-        console.log(this.state.sortSeted);
+        this.state.newText = this.props.text.map(function (item) {
+            return item;
+        });
+
+        if (this.state.sortSeted || this.state.filterText) {
+            this.modifyArr();
+        }
+        console.log('render ' + this.state.newText);  // проверяем модифицированный массив в state
 
         return React.DOM.div({ className: 'Filter' },
-            React.createElement(FilterBlock, { filterText: this.state.filterText, sortSeted: this.state.sortSeted, cbSetSort: this.sortSeted, cbFilterChanged: this.filterChanged }),
+            React.createElement(FilterBlock, {
+                filterText: this.state.filterText, sortSeted: this.state.sortSeted,
+                cbSetSort: this.sortSeted, cbFilterChanged: this.filterChanged, cbFuncReset: this.funcReset
+            }),
             React.createElement(TextBlock, { text: this.state.newText }),
         );
 
