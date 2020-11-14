@@ -12,6 +12,7 @@ let ItemBlock = React.createClass({
                 stock: React.PropTypes.number.isRequired
             })
         ),
+        cbDeletItem: React.PropTypes.func.isRequired,
     },
 
     getDefaultProps: function () {
@@ -28,6 +29,9 @@ let ItemBlock = React.createClass({
         console.log(EO.target.getAttribute('dataId'));
     },
 
+    deletItem: function (EO) {
+        this.props.cbDeletItem(2);
+    },
 
     render: function () {
 

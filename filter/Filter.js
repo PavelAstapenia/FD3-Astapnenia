@@ -28,23 +28,6 @@ let Filter = React.createClass({
         this.setState({ sortSeted: false });
     },
 
-    // modifyArr: function () {
-
-    //     let fText = this.state.filterText;
-    //     if (fText != '') {
-    //         let arr1 = this.state.newText.filter(function (item) {
-    //             return item.includes(fText);
-    //         });
-    //         this.state.newText = arr1;
-    //         console.log('filter ' + this.state.newText); // проверяем как отфильтрован массив
-    //     };
-
-    //     if (this.state.sortSeted) {
-    //         this.state.newText.sort();
-    //         console.log('sort ' + this.state.newText);  // проверяем как отсортирован массив
-    //     };
-    // },
-
     render: function () {
 
         let arr = this.props.text.map(function (item) {

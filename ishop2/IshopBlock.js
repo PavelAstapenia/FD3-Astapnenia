@@ -19,17 +19,25 @@ let StockBlockDiv = React.createClass({
         return { question: "No data available" }
     },
 
-    // getInitialState: function () {
-    //     return {
-    //         sortSeted: false,   //initial value of checkbox
-    //         filterText: '',     //initial value of filter
-    //         newText: ''
-    //     };
-    // },
+    getInitialState: function () {
+        return {
+            items: this.props.items.slice(),
+        };
+    },
 
-
+    deletItem: function (id) {
+        let arr1 = this.state.items.filter(function (item) {
+            return item.itemCode !== id;
+        });
+        this.setState((prevState) => { return { items: prevState.items = arr1 } });
+    },
 
     render: function () {
+
+
+
+
+
         let tableHeadCode =
             React.DOM.tr({ className: 'tableHead' },
                 React.DOM.th({ className: 'columnName' }, "Name"),
@@ -38,25 +46,11 @@ let StockBlockDiv = React.createClass({
                 React.DOM.th({ className: 'columnStock' }, "Stock"),
                 React.DOM.th({ className: 'columnControl' }, "Control"));
 
-        // let itemsCode = this.props.items.reduce((prevVal, current) => {
-
-        //     prevVal.push(
-        //         React.DOM.tr({ key: current.itemCode, className: 'tableRow' },
-        //             React.DOM.th({ className: 'columnName' }, current.name),
-        //             React.DOM.th({ className: 'columnPrice' }, current.price),
-        //             React.DOM.th({ className: 'columnPhoto' },
-        //                 React.DOM.a({ className: 'photoURL', target: "_blank", href: current.photoURL }, "Photo")),
-        //             React.DOM.th({ className: 'columnStock' }, current.stock))
-        //     );
-        //     return prevVal;
-        // }, []);
-
         return React.DOM.div({ className: 'StockBlock' },
             React.DOM.div({ className: 'ShopName' }, this.props.shopName),
             React.DOM.table({ className: 'Table' },
                 React.DOM.thead({ className: 'Thead' }, tableHeadCode),
-                React.createElement(ItemBlock, { items: this.props.items })
-                // React.DOM.tbody({ className: 'TItems' }, itemsCode)
+                React.createElement(ItemBlock, { items: this.state.items, cbDeletItem: this.deletItem })
             ),
         );
     },
