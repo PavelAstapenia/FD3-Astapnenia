@@ -19,7 +19,7 @@ let TextBlock = React.createClass({
     render: function () {
 
         return React.DOM.div({ className: 'TextBlock' },
-            React.DOM.textarea({ className: 'Text', defaultValue: this.state.text }),
+            React.DOM.textarea({ className: 'Text', value: this.state.text }),
         );
 
     },

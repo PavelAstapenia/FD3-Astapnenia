@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Голосование</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+    <script src="IshopBlock.js"></script>
+    <link rel="stylesheet" type="text/css" href="IshopItemsBlock.css" />
+    <script src="ItemBlock.js"></script>
+    <link rel="stylesheet" type="text/css" href="ItemBlock.css" />
+
+    <script>
+
+        let ishopName = 'IMarket';
+        let itemsArr = [
+            { itemCode: 1, name: 'Item1', price: 11.11, URL: "https://www.tut.by/", stock: 11 },
+            { itemCode: 2, name: 'Item2', price: 12.11, URL: "https://www.onliner.by/", stock: 12 },
+            { itemCode: 3, name: 'Item3', price: 13.11, URL: "https://dev.by/", stock: 13 }
+        ];
+
+        let i;
+
+
+        ReactDOM.render(
+            React.createElement(StockBlockDiv, { shopName: ishopName, items: itemsArr }),
+            document.getElementById('container')
+        );
+
+    </script>
+
+</body>
+
+</html>
