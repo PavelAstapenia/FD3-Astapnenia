@@ -21,12 +21,13 @@ let ItemBlock = React.createClass({
 
     getInitialState: function () {
         return {
-            itemSelected: 2,
+            itemSelected: 0,
         };
     },
 
     selectRow: function (EO) {
-        console.log(EO.target.getAttribute('dataId'));
+        console.log(EO.target.dataset.id);
+        console.log(EO.target.getAttribute('data-id'));
     },
 
     deletItem: function (EO) {
@@ -40,7 +41,7 @@ let ItemBlock = React.createClass({
             (this.state.itemSelected == current.itemCode) ? name = 'tableRow_red' : name = 'tableRow';
 
             prevVal.push(
-                React.DOM.tr({ key: current.itemCode, className: name, onClick: this.selectRow, dataId: current.itemCode },
+                React.DOM.tr({ key: current.itemCode, className: name, onClick: this.selectRow, 'data-id': current.itemCode },
                     React.DOM.th({ className: 'columnName' }, current.name),
                     React.DOM.th({ className: 'columnPrice' }, current.price),
                     React.DOM.th({ className: 'columnURL' },
