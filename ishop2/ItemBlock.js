@@ -47,7 +47,7 @@ let ItemBlock = React.createClass({
         // let name = '';
         // (this.state.itemSelected == this.props.itemCode) ? name = 'tableRow_red' : name = 'tableRow';
 
-        return React.DOM.tr({ key: this.props.itemCode, className: this.props.cssNameTr, onClick: this.selectRow, 'data-id': this.props.itemCode },
+        return React.DOM.tr({ className: this.props.cssNameTr, onClick: this.selectRow, 'data-id': this.props.itemCode },
             React.DOM.th({ className: 'columnName' }, this.props.name),
             React.DOM.th({ className: 'columnPrice' }, this.props.price),
             React.DOM.th({ className: 'columnURL' },

@@ -36,7 +36,7 @@ let StockBlockDiv = React.createClass({
         let arr1 = this.state.items.filter(function (item) {
             return item.itemCode !== id;
         });
-        this.setState((prevState) => { return { items: prevState.items = arr1 } });
+        this.setState((prevState) => { return { items: arr1 } });
     },
 
     selectedItem: function (n) {
@@ -57,6 +57,7 @@ let StockBlockDiv = React.createClass({
             (this.state.itemSelected == current.itemCode) ? cssNameTr = 'tableRow_red' : cssNameTr = 'tableRow';
             prevVal.push(
                 React.createElement(ItemBlock, {
+                    key: current.itemCode,
                     itemCode: current.itemCode,
                     name: current.name,
                     price: current.price,
