@@ -27,12 +27,13 @@ let StockBlockDiv = React.createClass({
     },
 
     deletItem: function (id) {
+        let deletedItem = this.state.items.find(item => item.itemCode == id).name;
+
+        if (confirm('Вы действительно хотите удалить ' + deletedItem + '?') != true) {
+            id = 0;  //если отмена, то код товара меняем на 0
+        };
+
         let arr1 = this.state.items.filter(function (item) {
-            if (item.itemCode == id) {     //когда фильтр доходит до нужного элемента массива уточняем удаление
-                if (confirm('Вы действительно хотите удалить ' + item.name + '?') != true) {
-                    id = 0;  //если отмена, то код товара меняем на 0
-                };
-            }
             return item.itemCode !== id;
         });
         this.setState((prevState) => { return { items: prevState.items = arr1 } });
