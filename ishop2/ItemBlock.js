@@ -23,8 +23,7 @@ let ItemBlock = React.createClass({
 
     deletItem: function (EO) {
         EO.stopPropagation();
-        let n = EO.target.closest('tr').getAttribute('data-id');
-        this.props.cbDeletItem(+n);
+        this.props.cbDeletItem(this.props.itemCode);
     },
 
     render: function () {
