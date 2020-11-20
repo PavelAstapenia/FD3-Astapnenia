@@ -17,24 +17,8 @@ let ItemBlock = React.createClass({
         return { question: "No data available" }
     },
 
-    // getInitialState: function () {
-    //     return {
-    //         itemSelected: this.props.itemSelected,
-    //     };
-    // },
-
-    // selectRow: function (EO) {
-    //     console.log('data ' + EO.target.closest('tr').getAttribute('data-id'));
-    //     let n = EO.target.closest('tr').getAttribute('data-id');
-    //     if (n !== null) {
-    //         this.setState((prevState) => { return { itemSelected: prevState.itemSelected = n } });
-    //     };
-    //     console.log('state select ' + this.state.itemSelected);
-    // },
-
     selectRow: function (EO) {
-        let n = EO.target.closest('tr').getAttribute('data-id');
-        this.props.cbSelectedItem(n);
+        this.props.cbSelectedItem(this.props.itemCode);
     },
 
     deletItem: function (EO) {
@@ -44,8 +28,6 @@ let ItemBlock = React.createClass({
     },
 
     render: function () {
-        // let name = '';
-        // (this.state.itemSelected == this.props.itemCode) ? name = 'tableRow_red' : name = 'tableRow';
 
         return React.DOM.tr({ className: this.props.cssNameTr, onClick: this.selectRow, 'data-id': this.props.itemCode },
             React.DOM.th({ className: 'columnName' }, this.props.name),

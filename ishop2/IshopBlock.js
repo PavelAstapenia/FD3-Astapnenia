@@ -29,18 +29,16 @@ let StockBlockDiv = React.createClass({
     deletItem: function (id) {
         let deletedItem = this.state.items.find(item => item.itemCode == id).name;
 
-        if (confirm('Вы действительно хотите удалить ' + deletedItem + '?') != true) {
-            id = 0;  //если отмена, то код товара меняем на 0
+        if (confirm('Вы действительно хотите удалить ' + deletedItem + '?') == true) {
+            let arr1 = this.state.items.filter(function (item) {
+                return item.itemCode !== id;
+            });
+            this.setState((prevState) => { return { items: arr1 } });
         };
-
-        let arr1 = this.state.items.filter(function (item) {
-            return item.itemCode !== id;
-        });
-        this.setState((prevState) => { return { items: arr1 } });
     },
 
     selectedItem: function (n) {
-        this.setState((prevState) => { return { itemSelected: prevState.itemSelected = n } });
+        this.setState({ itemSelected: n });
     },
 
     render: function () {
