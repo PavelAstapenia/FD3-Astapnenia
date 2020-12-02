@@ -1,0 +1,13 @@
+
+.Table  {
+    border-collapse: collapse;
+}
+
+.Thead > tr > th {
+    border: 1px solid;
+}
+
+.TItems > tr > th {
+    border: 1px solid;
+    padding: 4px;
+}

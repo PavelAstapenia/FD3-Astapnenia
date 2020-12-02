@@ -1,0 +1,23 @@
+.ItemName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.addName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.labelText {
+    font-weight: normal;
+}
+
+.spanErr {
+    font-weight: normal;
+    color: red;
+    font-size: 14px;
+}
+
+.tableAddItem {
+    text-align: left;
+}

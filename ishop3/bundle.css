@@ -1,0 +1,60 @@
+
+.Table  {
+    border-collapse: collapse;
+}
+
+.Thead > tr > th {
+    border: 1px solid;
+}
+
+.TItems > tr > th {
+    border: 1px solid;
+    padding: 4px;
+}.tableRow_red {
+    background: red;
+}.ItemName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.editName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.labelText {
+    font-weight: normal;
+}
+
+.spanErr {
+    font-weight: normal;
+    color: red;
+    font-size: 14px;
+}
+
+.tableEdit {
+    text-align: left;
+}.ItemName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.addName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.labelText {
+    font-weight: normal;
+}
+
+.spanErr {
+    font-weight: normal;
+    color: red;
+    font-size: 14px;
+}
+
+.tableAddItem {
+    text-align: left;
+}
+/*# sourceMappingURL=bundle.css.map*/
