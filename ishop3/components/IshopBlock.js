@@ -150,6 +150,7 @@ class IshopBlock extends React.Component {
         let addItemCode = < AddItem
             cdCancelAdd={this.cancelEdit}
             cbAddItem={this.addItem}
+            itemCode={this.state.items[this.state.items.length - 1].itemCode + 1}
         />;
 
         if (this.state.itemCardMode == 'not selected') {

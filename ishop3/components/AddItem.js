@@ -8,6 +8,7 @@ class AddItem extends React.Component {
     static propTypes = {
         cbAddItem: PropTypes.func.isRequired,
         cdCancelAdd: PropTypes.func.isRequired,
+        itemCode: PropTypes.number.isRequired
     };
 
     state = {
@@ -16,25 +17,12 @@ class AddItem extends React.Component {
         price: '',
         URL: '',
         stock: '',
-        codeErr: 'Please, fill the field. Value must be a string',
         nameErr: 'Please, fill the field. Value must be a string',
         priceErr: 'Please, fill the field. Value must be a number',
         URL_ERR: 'Please, fill the field. Value must be a link',
         stockErr: 'Please, fill the field. Value must be a number',
         validStatus: false, //статус валидации формы
     };
-
-
-    changeCode = (EO) => {
-        let newData = EO.target.value;
-        console.log('1' + this.state.itemCode);
-        if (newData != this.state.itemCode) {
-            this.setState({ itemCode: newData });
-        };
-        console.log('2' + this.state.itemCode);
-        this.checkValue();
-
-    }
 
     changeName = (EO) => {
         let newData = EO.target.value;
@@ -71,13 +59,6 @@ class AddItem extends React.Component {
     checkValue = () => {
         let validation = true;
 
-        if (this.state.itemCode != '') {
-            this.setState({ codeErr: '' });
-        } else {
-            this.setState({ codeErr: 'Please, fill the field. Value must be a string' });
-            validation = false;
-        }
-
         if (this.state.name != '') {
             this.setState({ nameErr: '' });
         } else {
@@ -111,7 +92,7 @@ class AddItem extends React.Component {
 
     addItem = () => {
         this.props.cbAddItem({
-            itemCode: this.state.itemCode,
+            itemCode: this.props.itemCode,
             name: this.state.name,
             price: this.state.price,
             URL: this.state.URL,
@@ -130,9 +111,8 @@ class AddItem extends React.Component {
                 <table className='tableAddItem'>
                     <tbody >
                         <tr>
-                            <th><label className='labelText'>{'itemCode'}</label></th>
-                            <th><input value={this.state.itemCode} onChange={this.changeCode} onBlur={this.checkValue}></input></th>
-                            <th><span className='spanErr' id='codeErr' >{this.state.codeErr}</span></th>
+                            <th><label className='labelText'>{'ItemCode:' + this.props.itemCode}</label></th>
+                            <th></th>
                         </tr>
                         <tr>
                             <th><label className='labelText'>{'Name'}</label></th>
