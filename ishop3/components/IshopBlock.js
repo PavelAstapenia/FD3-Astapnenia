@@ -121,11 +121,11 @@ class IshopBlock extends React.Component {
             return (
                 <ItemBlock
                     key={elem.itemCode}
-                    itemCode={elem.itemCode}
+                    itemCode={+elem.itemCode}
                     name={elem.name}
-                    price={elem.price}
+                    price={+elem.price}
                     URL={elem.URL}
-                    stock={elem.stock}
+                    stock={+elem.stock}
                     cbEditItem={this.editItem}
                     cbDeletItem={this.deletItem}
                     cbSelectedItem={this.selectedItem}

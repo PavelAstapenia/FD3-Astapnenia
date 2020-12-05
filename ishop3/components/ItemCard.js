@@ -6,13 +6,13 @@ import './ItemCard.css';
 class ItemCard extends React.Component {
 
     static propTypes = {
-        item: PropTypes.shape({
-            itemCode: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            URL: PropTypes.string.isRequired,
-            stock: PropTypes.number.isRequired
-        }),
+        // item: PropTypes.shape({
+        //     // itemCode: PropTypes.number.isRequired,
+        //     name: PropTypes.string.isRequired,
+        //     price: PropTypes.number.isRequired,
+        //     URL: PropTypes.string.isRequired,
+        //     stock: PropTypes.number.isRequired
+        // }),
         cbEditingCard: PropTypes.func.isRequired,
         cbSaveItem: PropTypes.func.isRequired,
         cdCancelEdit: PropTypes.func.isRequired,

@@ -29,7 +29,7 @@ class AddItem extends React.Component {
         if (newData != this.state.name) {
             this.setState({ name: newData });
         };
-        this.checkValue();
+        // this.checkValue();
     }
 
     changePrice = (EO) => {
@@ -37,7 +37,7 @@ class AddItem extends React.Component {
         if (newData != this.state.price) {
             this.setState({ price: newData });
         };
-        this.checkValue();
+        // this.checkValue();
     }
 
     changeURL = (EO) => {
@@ -45,7 +45,7 @@ class AddItem extends React.Component {
         if (newData != this.state.URL) {
             this.setState({ URL: newData });
         };
-        this.checkValue();
+        // this.checkValue();
     }
 
     changeStock = (EO) => {
@@ -53,7 +53,7 @@ class AddItem extends React.Component {
         if (newData != this.state.stock) {
             this.setState({ stock: newData });
         };
-        this.checkValue();
+        // this.checkValue();
     }
 
     checkValue = () => {
@@ -66,7 +66,7 @@ class AddItem extends React.Component {
             validation = false;
         }
 
-        if (this.state.price != '') {
+        if (this.state.price != '' && !Number.isNaN(Number(this.state.price))) {
             this.setState({ priceErr: '' });
         } else {
             this.setState({ priceErr: 'Please, fill the field. Value must be a number' });
@@ -80,7 +80,7 @@ class AddItem extends React.Component {
             validation = false;
         }
 
-        if (this.state.stock != '') {
+        if (this.state.stock != '' && !Number.isNaN(Number(this.state.stock))) {
             this.setState({ stockErr: '' });
         } else {
             this.setState({ stockErr: 'Please, fill the field. Value must be a number' });
