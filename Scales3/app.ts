@@ -1,6 +1,6 @@
 class Product {
-    name: string;
-    scale: number;
+    private name: string;
+    private scale: number;
 
     constructor(_name: string, _scale: number) {
         this.name = _name;
@@ -57,7 +57,7 @@ class Scales<StorageEngine extends IStorageEngine> {
 
 class ScalesStorageEngineArray implements IStorageEngine {
     productArr: Array<Product>;
-    // см 27 минуту видео
+
     constructor() {
         this.productArr = [];
     }
@@ -73,6 +73,35 @@ class ScalesStorageEngineArray implements IStorageEngine {
 
 }
 
+class ScalesStorageEngineLocalStorage implements IStorageEngine {
+    LocalStorageKey: string = "Product";
+
+    constructor() {
+        localStorage.setItem(this.LocalStorageKey, '0');
+    }
+
+    addItem(_product: Product): void {
+        let LSProduct: any[] = JSON.parse(localStorage.getItem(this.LocalStorageKey));
+        if (LSProduct == ["0"]) {
+            localStorage.setItem(this.LocalStorageKey, JSON.stringify([_product]));
+        } else {
+            LSProduct.push(_product);
+            localStorage.setItem(this.LocalStorageKey, JSON.stringify(LSProduct));
+        }
+    }
+
+    getItem(index: number): Product {
+        let LSProduct: any[] = JSON.parse(localStorage.getItem(this.LocalStorageKey));
+        return new Product(LSProduct[index].name, LSProduct[index].scale);
+    }
+
+    getCount(): number {
+        let LSProduct: any[] = JSON.parse(localStorage.getItem(this.LocalStorageKey));
+        return LSProduct.length;
+    }
+
+}
+
 
 // создаем продукты
 let product1: Product = new Product("Golden prince", 10);
@@ -81,7 +110,8 @@ let product3: Product = new Product("Holand", 30);
 let product4: Product = new Product("Peach", 40);
 
 // создаем весы со спсобом хранения в массиве
-let scaleArr = new Scales<ScalesStorageEngineArray>(ScalesStorageEngineArray);
+let scaleArrEngine = new ScalesStorageEngineArray();
+let scaleArr = new Scales<ScalesStorageEngineArray>(scaleArrEngine);
 
 // добавляем продукты на вессы с массивом
 scaleArr.add(product1);
@@ -89,3 +119,14 @@ scaleArr.add(product2);
 
 console.log('SumScaleArr=' + scaleArr.getSumScale());
 console.log('NameList=' + scaleArr.getNameList());
+
+// создаем весы со спсобом хранения в local storage
+let scaleLSEngine = new ScalesStorageEngineLocalStorage();
+let scaleLS = new Scales<ScalesStorageEngineLocalStorage>(scaleLSEngine);
+
+// добавляем продукты на вессы с массивом
+scaleLS.add(product3);
+scaleLS.add(product4);
+
+console.log('SumScaleLS=' + scaleLS.getSumScale());
+console.log('NameList=' + scaleLS.getNameList());
