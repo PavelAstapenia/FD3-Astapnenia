@@ -59,6 +59,7 @@ var ScalesStorageEngineLocalStorage = /** @class */ (function () {
         var LSProduct = JSON.parse(localStorage.getItem(this.LocalStorageKey));
         if (LSProduct == ["0"]) {
             localStorage.setItem(this.LocalStorageKey, JSON.stringify([_product]));
+            console.log("Done");
         }
         else {
             LSProduct.push(_product);

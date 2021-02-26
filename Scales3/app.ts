@@ -84,6 +84,7 @@ class ScalesStorageEngineLocalStorage implements IStorageEngine {
         let LSProduct: any[] = JSON.parse(localStorage.getItem(this.LocalStorageKey));
         if (LSProduct == ["0"]) {
             localStorage.setItem(this.LocalStorageKey, JSON.stringify([_product]));
+            console.log("Done");
         } else {
             LSProduct.push(_product);
             localStorage.setItem(this.LocalStorageKey, JSON.stringify(LSProduct));
